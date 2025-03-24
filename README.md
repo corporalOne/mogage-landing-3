@@ -1,0 +1,1 @@
+This landing is copied from https://pocket.tailwindui.com/ for educational purposes.
