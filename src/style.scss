@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wdth,wght@0,75..125,200..900;1,75..125,200..900&display=swap');
+
+$default-font: "Mona Sans", sans-serif;
+$default-weight: 500;
+$default-font-size: 16px;
+$default-font-stretch: semi-expanded;
+$default-line-height: 1.5;
+$default-font-color: #6e6e6e;
+
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: $default-font;
+    font-optical-sizing: auto;
+    font-weight: $default-weight;
+    font-size: $default-font-size;
+    font-stretch: $default-font-stretch;
+    line-height: $default-line-height;
+    color: $default-font-color;
+}
+
+.mx-auto {
+    margin: 0 auto;
+}
+
+$inline-paddings: (
+    px-1: 4px,
+    px-2: 8px,
+    px-3: 12px,
+    px-4: 16px,
+    px-5: 20px,
+    px-6: 24px,
+    px-7: 28px,
+    px-8: 32px,
+    px-9: 36px,
+    px-10: 40px,
+    px-11: 44px,
+    px-12: 48px,
+);
+
+@each $name, $padding in $inline-paddings {
+    .#{$name} {
+        padding-inline: $padding;
+    }
+}
+
+$block-paddings: (
+    py-1: 4px,
+    py-2: 8px,
+    py-3: 12px,
+    py-4: 16px,
+    py-5: 20px,
+    py-6: 24px,
+    py-7: 28px,
+    py-8: 32px,
+    py-9: 36px,
+    py-10: 40px,
+    py-11: 44px,
+    py-12: 48px,
+);
+
+@each $name, $padding in $block-paddings {
+    .#{$name} {
+        padding-block: $padding;
+    }
+}
+
+$block-margins: (
+    my-1: 4px,
+    my-2: 8px,
+    my-3: 12px,
+    my-4: 16px,
+    my-5: 20px,
+    my-6: 24px,
+    my-7: 28px,
+    my-8: 32px,
+    my-9: 36px,
+    my-10: 40px,
+    my-11: 44px,
+    my-12: 48px,
+    my-13: 52px,
+    my-14: 56px,
+    my-15: 60px,
+    my-16: 64px,
+    my-17: 68px,
+    my-18: 72px,
+    my-19: 76px,
+    my-20: 80px,
+);
+
+@each $name, $margin in $block-margins {
+    .#{$name} {
+        margin-block: $margin;
+    }
+}
+
+$border-radii: (
+    radius-xs: .125rem,
+    radius-sm: .25rem,
+    radius-md: .375rem,
+    radius-lg: .5rem,
+    radius-xl: .75rem,
+    radius-2xl: 1rem,
+    radius-3xl: 1.5rem,
+    radius-4xl: 2rem,
+);
+
+@each $name, $radius in $border-radii {
+    .#{$name} {
+        border-radius: $radius;
+    }
+}
+
+$text-sizes: (
+    text-xs: .75rem,
+    text-sm: .875rem,
+    text-md: 1rem,
+    text-lg: 1.125rem,
+    text-xl: 1.25rem,
+    text-2xl: 1.5rem,
+    text-3xl: 2rem,
+    text-4xl: 2.5rem,
+    text-5xl: 3rem,
+    text-6xl: 3.75rem,
+    text-7xl: 4.5rem,
+    text-8xl: 6rem,
+);
+
+@each $name, $size in $text-sizes {
+    .#{$name} {
+        font-size: $size;
+    }
+}
+
+html {
+    height: 100%;
+    background-color: #f2f2f2;
+}
+
+header {
+    max-width: 1280px;
+
+    > div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 64px;
+
+    &__logo {
+        svg {
+            height: 40px;
+            width: auto;
+
+            svg {
+                height: 40px;
+                width: 40px;
+                fill: #00b7db;
+            }
+        }
+    }
+
+    &__nav {
+        ul {
+            display: flex;
+            flex-direction: row;
+            gap: 32px;
+            list-style: none;
+
+            li {
+                a {
+                    text-decoration: none;
+                    color: $default-font-color;
+                }
+            }
+        }
+
+        @media (max-width: 1024px) {
+            display: none;
+        }
+    }
+}
+
+.header__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+
+    svg {
+        height: 24px;
+        width: 24px;
+        display: none;
+
+        @media (max-width: 1024px) {
+            display: block;
+        }
+    }
+}
+
+.button-primary {
+    padding-inline: 16px;
+    padding-block: 8px;
+    border-radius: .5rem;
+    border: 1px solid $default-font-color;
+    color: $default-font-color;
+    transition: border-color 0.2s ease;
+
+    @media (max-width: 1024px) {
+        display: none;
+    }
+
+    &:hover {
+        border-color: #252525;
+    }
+}
+
+.button-secondary {
+    padding-inline: 16px;
+    padding-block: 8px;
+    border-radius: .5rem;
+    font-weight: 600;
+    border: none;
+    background-color: black;
+    color: #dcdcdc;
+    transition: background-color 0.2s ease;
+
+    @media (max-width: 1024px) {
+        display: none;
+    }
+
+    &:hover {
+        background-color: #373737;
+    }
+}
