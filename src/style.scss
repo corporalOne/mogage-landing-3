@@ -5,7 +5,7 @@ $default-weight: 500;
 $default-font-size: 16px;
 $default-font-stretch: semi-expanded;
 $default-line-height: 1.5;
-$default-font-color: #6e6e6e;
+$default-font-color: #454545;
 
 *,
 *:before,
@@ -138,6 +138,24 @@ $text-sizes: (
     }
 }
 
+$weights: (
+    thin: 100,
+    extralight: 200,
+    light: 300,
+    normal: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+    extrabold: 800,
+    boldest: 900,
+);
+
+@each $name, $weight in $weights {
+    .font-#{$name} {
+        font-weight: $weight;
+    }
+}
+
 html {
     height: 100%;
     background-color: #f2f2f2;
@@ -181,8 +199,34 @@ header {
 
             li {
                 a {
+                    position: relative;
+                    padding: 8px;
                     text-decoration: none;
                     color: $default-font-color;
+                    transition: all 0.2s;
+                    transition-delay: 0.15s;
+
+                    span:nth-of-type(1) {
+                        position: absolute;
+                        inset: 0;
+                        background-color: #eaeaea;
+                        border-radius: 8px;
+                        transition: opacity 0.4s;
+                        opacity: 0;
+                    }
+
+                    span:nth-of-type(2) {
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    &:hover {
+                        color: #333333;
+
+                        span:nth-of-type(1) {
+                            opacity: 1;
+                        }
+                    }
                 }
             }
         }
@@ -208,40 +252,144 @@ header {
             display: block;
         }
     }
+
+    &--log-in {
+        padding-inline: 16px;
+        padding-block: 8px;
+        border-radius: .5rem;
+        border: 1px solid #b8b8b8;
+        color: $default-font-color;
+        transition: border-color 0.2s ease;
+
+        @media (max-width: 1024px) {
+            display: none;
+        }
+
+        &:hover {
+            border-color: #252525;
+        }
+    }
+
+    &--download {
+        padding-inline: 16px;
+        padding-block: 8px;
+        border-radius: .5rem;
+        font-weight: 600;
+        border: none;
+        background-color: #2e2e2e;
+        color: #dcdcdc;
+        transition: background-color 0.2s ease;
+
+        @media (max-width: 1024px) {
+            display: none;
+        }
+
+        &:hover {
+            background-color: black;
+        }
+    }
 }
 
-.button-primary {
-    padding-inline: 16px;
-    padding-block: 8px;
+main {
+    max-width: 1280px;
+}
+
+.apple-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: .5rem;
-    border: 1px solid $default-font-color;
+    border: none;
+    background-color: #2e2e2e;
+    color: white;
+    transition: background-color 0.2s;
+
+    svg {
+        height: 40px;
+    }
+
+    &:hover {
+        background-color: black;
+    }
+}
+
+.youtube-btn {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    font-size: 1rem;
+    padding-inline: 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: .5rem;
+    border: 1px solid #b8b8b8;
     color: $default-font-color;
     transition: border-color 0.2s ease;
 
-    @media (max-width: 1024px) {
-        display: none;
+    svg {
+        width:24px;
+        height:24px;
+
+        circle {
+            transition: stroke 0.2s;
+        }
+
+        path {
+            transition: fill 0.2s, stroke 0.2s;
+        }
     }
 
     &:hover {
         border-color: #252525;
+
+        svg {
+            circle {
+                stroke: #252525;
+            }
+
+            path {
+                fill: #252525;
+                stroke: #252525;
+            }
+        }
     }
 }
 
-.button-secondary {
-    padding-inline: 16px;
-    padding-block: 8px;
-    border-radius: .5rem;
-    font-weight: 600;
-    border: none;
-    background-color: black;
-    color: #dcdcdc;
-    transition: background-color 0.2s ease;
+.description-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
 
-    @media (max-width: 1024px) {
-        display: none;
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    h2 {
+        color: black;
     }
 
-    &:hover {
-        background-color: #373737;
+    &__buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+    }
+}
+
+.community {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    span {
+        color: black;
+    }
+
+    &__images {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 32px;
     }
 }
