@@ -174,14 +174,12 @@ header {
 
     > div {
         display: flex;
-        flex-direction: row;
         justify-content: space-between;
     }
 }
 
 .header {
     display: flex;
-    flex-direction: row;
     align-items: center;
     gap: 64px;
 
@@ -201,7 +199,6 @@ header {
     &__nav {
         ul {
             display: flex;
-            flex-direction: row;
             gap: 32px;
             list-style: none;
 
@@ -211,7 +208,7 @@ header {
                     padding: 8px;
                     text-decoration: none;
                     color: $default-font-color;
-                    transition: all 0.2s;
+                    transition: background-color 0.2s, opacity 0.2s;
                     transition-delay: 0.15s;
 
                     span:nth-of-type(1) {
@@ -225,7 +222,6 @@ header {
 
                     span:nth-of-type(2) {
                         position: relative;
-                        z-index: 1;
                     }
 
                     &:hover {
@@ -247,7 +243,6 @@ header {
 
 .header__buttons {
     display: flex;
-    flex-direction: row;
     gap: 16px;
     align-items: center;
 
@@ -309,8 +304,6 @@ main {
 
     > div:first-child {
         display: flex;
-        flex-direction: row;
-        position: relative;
         margin: 0 auto;
         max-width: 1280px;
         padding-inline: 16px;
@@ -338,7 +331,6 @@ main {
 
 .youtube-btn {
     display: flex;
-    flex-direction: row;
     gap: 8px;
     font-size: 1rem;
     padding-inline: 16px;
@@ -396,7 +388,6 @@ main {
 
     &__buttons {
         display: flex;
-        flex-direction: row;
         gap: 16px;
     }
 }
@@ -497,7 +488,6 @@ main {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-direction: row;
             padding: 24px 16px;
 
             svg:nth-of-type(1), svg:nth-of-type(3) {
@@ -544,8 +534,19 @@ main {
 }
 
 @keyframes vertical-translate {
+    0% {
+        transform: translateY(0%);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
     100% {
         transform: translateY(-50%);
+        opacity: 0;
     }
 }
 
@@ -553,7 +554,6 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-direction: row;
 
     > div:first-child {
         display: flex;
@@ -579,7 +579,6 @@ main {
 
     > div:first-child {
         display: flex;
-        flex-direction: row;
         justify-content: space-between;
         align-items: baseline;
 
@@ -596,7 +595,6 @@ main {
 
     > div:nth-of-type(2) {
         display: flex;
-        flex-direction: row;
         gap: 8px;
     }
 
@@ -622,7 +620,6 @@ main {
 
     > div:nth-of-type(5), > div:nth-of-type(6) {
         display: flex;
-        flex-direction: row;
         justify-content: space-between;
     }
 }
@@ -653,7 +650,6 @@ main {
 
     &__details {
         display: flex;
-        flex-direction: row;
         margin-top: 64px;
 
         > div:first-child {
@@ -712,7 +708,6 @@ main {
 
         > div:first-child {
             display: flex;
-            flex-direction: row;
             align-items: center;
             justify-content: space-between;
             padding-inline: 16px;
@@ -947,12 +942,13 @@ main {
 
     .feedbacks {
         display: flex;
-        flex-direction: row;
         margin-top: 64px;
         gap: 16px;
         max-height: 150vh;
         height: 50rem;
         overflow: hidden;
+        color: black;
+        mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
 
         > div:nth-of-type(1), div:nth-of-type(2), div:nth-of-type(3) {
             display: flex;
@@ -964,29 +960,216 @@ main {
                 padding: 32px;
                 border-radius: 8px;
                 box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-                animation: fade-in 1.4s linear forwards;
+                animation: fade-in 1s linear forwards;
                 opacity: 0;
+
+                blockquote {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+
+                    span:before {
+                        content: "“";
+                    }
+                    span:after {
+                        content: "”";
+                    }
+                }
+
+                figcaption {
+                    margin-top: 24px;
+                    color: $default-font-color;
+                }
+
+                figcaption:before {
+                    content: "– ";
+                }
             }
 
             figure:nth-of-type(1) {
-                animation-delay: 0.1s;
+                animation-delay: 1.4s;
             }
 
             figure:nth-of-type(2) {
-                animation-delay: 0.3s;
+                animation-delay: 1s;
             }
 
             figure:nth-of-type(3) {
-                animation-delay: 0.6s;
+                animation-delay: 0.8s;
             }
 
             figure:nth-of-type(4) {
-                animation-delay: 0.9s;
+                animation-delay: 0.6s;
             }
         }
 
-        > div:nth-of-type(1) {
-            animation: vertical-translate 8s linear infinite;
+        > div:nth-of-type(1), div:nth-of-type(3) {
+            animation: vertical-translate 13s linear infinite;
+        }
+
+        > div:nth-of-type(2) {
+            animation: vertical-translate 17s linear infinite;
+        }
+
+        > div:nth-of-type(3) {
+            animation-delay: 1s;
+        }
+    }
+}
+
+.pricing {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-inline: 16px;
+    padding-block: 64px;
+    color: $default-font-color;
+
+    &__heading {
+        display: flex;
+        flex-direction: column;
+        max-width: 700px;
+        margin: 0 auto;
+        gap: 24px;
+        text-align: center;
+
+        h2 {
+            color: black;
+        }
+
+        div {
+            span {
+                border: 1px solid rgba(69, 69, 69, 0.5);
+                padding: 8px;
+            }
+
+            > span:nth-of-type(1) {
+                border-bottom-left-radius: 8px;
+                border-top-left-radius: 8px;
+                border-right: none;
+                background-color: #00b7db;
+                color: white;
+            }
+
+            > span:nth-of-type(2) {
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+                border-left: none;
+                margin-left: -4px;
+            }
+        }
+    }
+
+    &__content {
+        margin-top: 64px;
+        display: flex;
+        align-items: flex-start;
+        gap: 32px;
+        width: 100%;
+        color: $default-font-color;
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 24px;
+            width: 100%;
+
+            > div:first-child {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+
+                svg {
+                    height: 24px;
+                    width: 24px;
+                }
+
+                .grey {
+                    fill: #d4d4d4;
+                }
+
+                .more-grey {
+                    fill: #8e8e8e;
+                }
+
+                .light-blue {
+                    fill: #00b7db;
+                }
+            }
+
+            > div:nth-of-type(2) {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                h2 {
+                    color: black;
+                }
+
+                button {
+                    border: none;
+                    border-radius: 8px;
+                    padding: 12px;
+                    background-color: #262626;
+                    color: white;
+                }
+            }
+
+            ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                li {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+
+                    div {
+                        display: flex;
+                        align-items: center;
+                        gap: 16px
+                    }
+
+                    svg {
+                        height: 24px;
+                        width: 24px;
+                        flex: none;
+                        color: #00b7db;
+                    }
+
+                    > span:nth-of-type(1) {
+                        background-color: rgba(69, 69, 69, 0.2);
+                        height: 1px;
+                    }
+                }
+            }
+        }
+
+        > div:nth-of-type(3) {
+            background-color: #171717;
+            color: white;
+
+            > div:nth-of-type(2) {
+                h2 {
+                    color: white;
+                }
+
+                button {
+                    background-color: #00b7db;
+                }
+            }
+
+            ul {
+                li {
+                    svg {
+                        color: white;
+                    }
+                }
+            }
         }
     }
 }
