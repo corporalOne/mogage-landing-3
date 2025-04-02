@@ -205,7 +205,8 @@ header {
             li {
                 a {
                     position: relative;
-                    padding: 8px;
+                    padding: 12px 8px;
+                    margin-inline: -8px;
                     text-decoration: none;
                     color: $default-font-color;
                     transition: background-color 0.2s, opacity 0.2s;
@@ -1114,6 +1115,11 @@ main {
                     padding: 12px;
                     background-color: #262626;
                     color: white;
+                    transition: background-color 0.2s;
+
+                    &:hover {
+                        background-color: #000000;
+                    }
                 }
             }
 
@@ -1160,6 +1166,11 @@ main {
 
                 button {
                     background-color: #00b7db;
+                    transition: background-color 0.2s;
+
+                    &:hover {
+                        background-color: #00c5ec;
+                    }
                 }
             }
 
@@ -1168,6 +1179,189 @@ main {
                     svg {
                         color: white;
                     }
+                }
+            }
+        }
+    }
+}
+
+.faq-section {
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid rgba(69, 69, 69, 0.2);
+    border-bottom: 1px solid rgba(69, 69, 69, 0.2);
+    color: $default-font-color;
+
+    h2, h3 {
+        color: black;
+    }
+}
+
+.faq {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-inline: 16px;
+    padding-block: 80px;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        div {
+            a {
+                color: $default-font-color;
+            }
+        }
+    }
+
+    &__content {
+        margin-top: 64px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .subject {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+}
+
+footer {
+    background-color: white;
+}
+
+.footer-container {
+    width: 1280px;
+    margin: 0 auto;
+    padding-inline: 16px;
+    padding-block: 64px;
+
+    h3 {
+        color: black;
+    }
+
+    > div:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .brand-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        > div:first-child {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            svg {
+                width: 40px;
+                height: 40px;
+                flex: none;
+                fill: #00b7db;
+            }
+
+            div:nth-of-type(1) {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    }
+
+    .qr-container {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        max-width: 430px;
+        padding: 16px;
+        transition: background-color 0.2s;
+
+        > div:first-child {
+            display: flex;
+            position: relative;
+            height: 96px;
+            width: 96px;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                stroke: #454545;
+                inset: 0;
+                position: absolute;
+                transition: stroke 0.2s;
+            }
+        }
+
+        > div:nth-of-type(2) {
+            flex: 4;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        &:hover {
+            background-color: #eaeaea;
+            border-radius: 16px;
+
+            > div:first-child svg {
+                stroke: #00b7db;
+            }
+        }
+    }
+
+    .footer-newsletter {
+        display: flex;
+        justify-content: space-between;
+        padding: 24px 0 64px 0;
+        margin-top: 64px;
+        border-top: 1px solid rgb(69, 69, 69, 0.2);
+
+        > div:first-child {
+            p {
+                color: #838383;
+            }
+        }
+
+        > div:last-child {
+            display: flex;
+            gap: 16px;
+
+            label input {
+                padding: 12px;
+                border-radius: 8px;
+                border: none;
+                outline: 1px solid rgba(69, 69, 69, 0.2);
+                transition: border-color 0.2s;
+
+                &:focus {
+                    outline: 2px solid #00b7db;
+                }
+            }
+
+            button {
+                border: none;
+                border-radius: 8px;
+                padding: 12px;
+                background-color: #00b7db;
+                color: white;
+                transition: background-color 0.2s;
+
+                &:hover {
+                    background-color: #00c5ec;
                 }
             }
         }
