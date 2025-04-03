@@ -296,6 +296,7 @@ header {
 
 main {
     width: 100%;
+    overflow: hidden;
 }
 
 .description-section {
@@ -308,6 +309,11 @@ main {
         margin: 0 auto;
         max-width: 1280px;
         padding-inline: 16px;
+
+        @media (max-width: 1024px) {
+            flex-direction: column;
+            max-width: 640px;
+        }
     }
 }
 
@@ -376,6 +382,10 @@ main {
     flex-direction: column;
     width: 50%;
     z-index: 1;
+
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
 }
 
 .description {
@@ -407,6 +417,18 @@ main {
         align-items: center;
         flex-wrap: wrap;
         gap: 32px;
+
+        @media (max-width: 1024px) {
+            justify-content: center;
+
+            img:nth-of-type(7), img:nth-of-type(8) {
+                display: none;
+            }
+        }
+    }
+
+    @media (max-width: 1024px) {
+        align-items: center;
     }
 }
 
@@ -416,32 +438,36 @@ main {
     height: 481px;
 
      > div:nth-child(1) {
-        position: absolute;
-        width: 1024px;
-        height: 1024px;
-        top: -10%;
-        left: -32%;
-        mask-image: linear-gradient(#fff 20%, #0000 75%);
+         position: absolute;
+         width: 1024px;
+         height: 1024px;
+         top: -10%;
+         left: -32%;
+         mask-image: linear-gradient(#fff 20%, #0000 75%);
 
-        svg:nth-child(1) {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            inset: 0;
-            animation: spin 4s linear infinite;;
-        }
+         svg:nth-child(1) {
+             width: 100%;
+             height: 100%;
+             position: absolute;
+             inset: 0;
+             animation: spin 4s linear infinite;;
+         }
 
-        svg:nth-child(2) {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            inset: 0;
-            animation: spin-reverse 6s linear infinite;;
-        }
+         svg:nth-child(2) {
+             width: 100%;
+             height: 100%;
+             position: absolute;
+             inset: 0;
+             animation: spin-reverse 6s linear infinite;;
+         }
     }
 
     > div:nth-child(2) {
         mask-image: linear-gradient(#fff 60%, #0000);
+    }
+
+    @media (max-width: 1024px) {
+        width: 100%;
     }
 }
 
@@ -634,6 +660,10 @@ main {
         max-width: 1280px;
         margin: 0 auto;
         padding-inline: 16px;
+
+        @media (max-width: 1024px) {
+            max-width: 640px;
+        }
     }
 
     &__description {
@@ -647,6 +677,11 @@ main {
             color: #a1a19d;
             line-height: 1.8;
         }
+
+        @media (max-width: 1024px) {
+            width: 100%;
+            align-items: center;
+        }
     }
 
     &__details {
@@ -657,6 +692,14 @@ main {
             display: flex;
             width: 50%;
             position: relative;
+
+            @media (max-width: 1024px) {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            flex-direction: column;
         }
     }
 }
@@ -818,6 +861,11 @@ main {
             background-color: #1b1b1b;
         }
     }
+
+    @media (max-width: 1024px) {
+        width: 100%;
+        margin-top: 64px;
+    }
 }
 
 .portfolio-container {
@@ -841,11 +889,14 @@ main {
             color: black;
         }
     }
+
+    @media (max-width: 1024px) {
+        max-width: 640px;
+    }
 }
 
 .portfolio-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     grid-gap: 32px;
     margin-top: 64px;
 
@@ -861,6 +912,18 @@ main {
             height: 32px;
             width: 32px;
         }
+    }
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 640px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -1010,11 +1073,23 @@ main {
 
         > div:nth-of-type(2) {
             animation: vertical-translate 17s linear infinite;
+
+            @media (max-width: 640px) {
+                display: none;
+            }
         }
 
         > div:nth-of-type(3) {
             animation-delay: 1s;
+
+            @media (max-width: 1024px) {
+                display: none;
+            }
         }
+    }
+
+    @media (max-width: 1024px) {
+        max-width: 640px;
     }
 }
 
@@ -1155,9 +1230,22 @@ main {
             }
         }
 
-        > div:nth-of-type(3) {
+        .card:nth-of-type(1) {
+            order: 1;
+
+            @media (max-width: 1024px) {
+                order: 3;
+            }
+        }
+
+        .card:nth-of-type(2) {
+            order: 2;
+        }
+
+        .card:nth-of-type(3) {
             background-color: #171717;
             color: white;
+            order: 3;
 
             > div:nth-of-type(2) {
                 h2 {
@@ -1181,7 +1269,19 @@ main {
                     }
                 }
             }
+
+            @media (max-width: 1024px) {
+                order: 1;
+            }
         }
+
+        @media (max-width: 1024px) {
+            flex-direction: column;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        max-width: 640px;
     }
 }
 
@@ -1234,6 +1334,14 @@ main {
             flex-direction: column;
             gap: 16px;
         }
+
+        @media (max-width: 1024px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        max-width: 640px;
     }
 }
 
@@ -1242,7 +1350,7 @@ footer {
 }
 
 .footer-container {
-    width: 1280px;
+    max-width: 1280px;
     margin: 0 auto;
     padding-inline: 16px;
     padding-block: 64px;
@@ -1255,12 +1363,18 @@ footer {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            align-items: start;
+        }
     }
 
     .brand-nav {
         display: flex;
         flex-direction: column;
         gap: 32px;
+        padding: 16px;
 
         > div:first-child {
             display: flex;
@@ -1326,19 +1440,28 @@ footer {
     .footer-newsletter {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 24px 0 64px 0;
         margin-top: 64px;
         border-top: 1px solid rgb(69, 69, 69, 0.2);
 
         > div:first-child {
+            display: flex;
+            order: 1;
+
             p {
                 color: #838383;
+            }
+
+            @media (max-width: 768px) {
+                order: 2;
             }
         }
 
         > div:last-child {
             display: flex;
             gap: 16px;
+            order: 2;
 
             label input {
                 padding: 12px;
@@ -1364,6 +1487,15 @@ footer {
                     background-color: #00c5ec;
                 }
             }
+
+            @media (max-width: 768px) {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            gap: 32px;
         }
     }
 }
